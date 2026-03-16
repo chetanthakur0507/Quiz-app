@@ -1,0 +1,42 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(420 260) rotate(35) scale(620 420)">
+      <stop offset="0" stop-color="#5EEAD4" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#5EEAD4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1460 300) rotate(-20) scale(760 460)">
+      <stop offset="0" stop-color="#7DD3FC" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#7DD3FC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(980 760) rotate(12) scale(900 520)">
+      <stop offset="0" stop-color="#FDE68A" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FDE68A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="180" y1="120" x2="1740" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0F172A" stop-opacity="0.04"/>
+    </linearGradient>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ECFEFF"/>
+  <rect width="1920" height="1080" fill="url(#g1)"/>
+  <rect width="1920" height="1080" fill="url(#g2)"/>
+  <rect width="1920" height="1080" fill="url(#g3)"/>
+
+  <g opacity="0.56">
+    <path d="M120 820L500 160L980 860L120 820Z" fill="#FFFFFF"/>
+    <path d="M620 910L980 250L1460 930L620 910Z" fill="#FFFFFF"/>
+    <path d="M1120 840L1500 130L1860 860L1120 840Z" fill="#FFFFFF"/>
+  </g>
+
+  <g stroke="url(#line)" stroke-width="2.2" filter="url(#soft)">
+    <path d="M120 820L500 160L980 860L120 820Z"/>
+    <path d="M620 910L980 250L1460 930L620 910Z"/>
+    <path d="M1120 840L1500 130L1860 860L1120 840Z"/>
+    <path d="M500 160L980 250L1500 130"/>
+    <path d="M980 860L980 250L1460 930"/>
+  </g>
+</svg>
