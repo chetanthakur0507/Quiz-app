@@ -65,6 +65,7 @@
 
 @layer theme {
   :root, :host {
+    --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
     --color-red-100: #ffe2e2;
     --color-red-200: #ffcaca;
@@ -157,6 +158,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-black: 900;
+    --tracking-tighter: -.05em;
     --tracking-tight: -.025em;
     --radius-lg: .5rem;
     --radius-xl: .75rem;
@@ -510,6 +512,10 @@
     pointer-events: none;
   }
 
+  .collapse {
+    visibility: collapse;
+  }
+
   .visible {
     visibility: visible;
   }
@@ -520,6 +526,10 @@
 
   .fixed {
     position: fixed;
+  }
+
+  .fixed\! {
+    position: fixed !important;
   }
 
   .relative {
@@ -546,12 +556,24 @@
     inset-inline-end: var(--spacing);
   }
 
+  .end\! {
+    inset-inline-end: var(--spacing) !important;
+  }
+
+  .top-1 {
+    top: calc(var(--spacing) * 1);
+  }
+
   .top-10 {
     top: calc(var(--spacing) * 10);
   }
 
   .-right-24 {
     right: calc(var(--spacing) * -24);
+  }
+
+  .right-24 {
+    right: calc(var(--spacing) * 24);
   }
 
   .bottom-1 {
@@ -564,6 +586,10 @@
 
   .-left-20 {
     left: calc(var(--spacing) * -20);
+  }
+
+  .left-106 {
+    left: calc(var(--spacing) * 106);
   }
 
   .z-0 {
@@ -738,6 +764,10 @@
     transform: var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
   }
 
+  .animate-spin {
+    animation: var(--animate-spin);
+  }
+
   .resize {
     resize: both;
   }
@@ -782,6 +812,10 @@
     --tw-space-y-reverse: 0;
     margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+  }
+
+  :where(.space-y-reverse > :not(:last-child)) {
+    --tw-space-y-reverse: 1;
   }
 
   .truncate {
@@ -1164,6 +1198,11 @@
     letter-spacing: var(--tracking-tight);
   }
 
+  .tracking-tighter {
+    --tw-tracking: var(--tracking-tighter);
+    letter-spacing: var(--tracking-tighter);
+  }
+
   .text-emerald-700 {
     color: var(--color-emerald-700);
   }
@@ -1243,6 +1282,11 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
 
+  .ring {
+    --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
   .ring-0 {
     --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -1260,6 +1304,11 @@
 
   .blur-3xl {
     --tw-blur: blur(var(--blur-3xl));
+    filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+  }
+
+  .blur-xl {
+    --tw-blur: blur(var(--blur-xl));
     filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
   }
 
@@ -1295,14 +1344,48 @@
     transition-duration: .3s;
   }
 
+  .ease-in {
+    --tw-ease: var(--ease-in);
+    transition-timing-function: var(--ease-in);
+  }
+
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
   }
 
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
+
   .outline-none {
     --tw-outline-style: none;
     outline-style: none;
+  }
+
+  .\[key\:\15 Y4ng\] {
+    key:  Y4ng;
+  }
+
+  .\[key\:bT4ng\] {
+    key: bT4ng;
+  }
+
+  .\[key\:o\^4ng\] {
+    key: o^ 4ng;
+  }
+
+  .\[key\:��4ng\] {
+    key: ��4ng;
+  }
+
+  .\[metatype\:�\5 r\] {
+    metatype: � r;
+  }
+
+  .\[name\:\4 \6 �\] {
+    name:   �;
   }
 
   @media (hover: hover) {
