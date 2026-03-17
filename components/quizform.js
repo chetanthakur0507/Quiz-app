@@ -23,9 +23,22 @@ export default function QuizForm() {
     process.env.NEXT_PUBLIC_API_BASE_URL ||
     "";
 
-  const generateQuizUrl = apiBaseUrl
-    ? `${apiBaseUrl.replace(/\/$/, "")}/generate-quiz`
-    : "/api/generate-quiz";
+  const resolveGenerateQuizUrl = () => {
+    const normalizedBase = apiBaseUrl.trim().replace(/\/$/, "");
+    if (!normalizedBase) return "/api/generate-quiz";
+
+    // If deployed on a real domain, ignore localhost API URLs and use same-origin API route.
+    if (typeof window !== "undefined") {
+      const host = window.location.hostname;
+      const isDeployedHost = host !== "localhost" && host !== "127.0.0.1";
+      const isLocalApi = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(normalizedBase);
+      if (isDeployedHost && isLocalApi) {
+        return "/api/generate-quiz";
+      }
+    }
+
+    return `${normalizedBase}/generate-quiz`;
+  };
 
   const currentQuestion = useMemo(() => {
     return quizState.questions[quizState.currentIndex] || null;
@@ -63,7 +76,7 @@ export default function QuizForm() {
       setIsLoading(true);
       resetQuizProgress([]);
 
-      const res = await fetch(generateQuizUrl, {
+      const res = await fetch(resolveGenerateQuizUrl(), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +88,14 @@ export default function QuizForm() {
       });
 
       if (!res.ok) {
-        throw new Error(`Request failed with status ${res.status}`);
+        let detail = "";
+        try {
+          const errPayload = await res.json();
+          detail = errPayload?.error || errPayload?.detail || "";
+        } catch {
+          detail = "";
+        }
+        throw new Error(detail || `Request failed with status ${res.status}`);
       }
 
       const data = await res.json();
@@ -87,7 +107,7 @@ export default function QuizForm() {
       resetQuizProgress(data.quiz);
     } catch (fetchError) {
       console.error(fetchError);
-      setError("Quiz generate nahi hua. API configuration check karo aur dobara try karo.");
+      setError(fetchError instanceof Error ? fetchError.message : "Quiz generate nahi hua. API configuration check karo aur dobara try karo.");
     } finally {
       setIsLoading(false);
     }
