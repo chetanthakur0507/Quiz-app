@@ -21,7 +21,11 @@ export default function QuizForm() {
   const apiBaseUrl =
     process.env.NEXT_PUBLIC_API_URL ||
     process.env.NEXT_PUBLIC_API_BASE_URL ||
-    "http://127.0.0.1:8000";
+    "";
+
+  const generateQuizUrl = apiBaseUrl
+    ? `${apiBaseUrl.replace(/\/$/, "")}/generate-quiz`
+    : "/api/generate-quiz";
 
   const currentQuestion = useMemo(() => {
     return quizState.questions[quizState.currentIndex] || null;
@@ -59,7 +63,7 @@ export default function QuizForm() {
       setIsLoading(true);
       resetQuizProgress([]);
 
-      const res = await fetch(`${apiBaseUrl}/generate-quiz`, {
+      const res = await fetch(generateQuizUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +87,7 @@ export default function QuizForm() {
       resetQuizProgress(data.quiz);
     } catch (fetchError) {
       console.error(fetchError);
-      setError("Quiz generate nahi hua. Ensure backend chal raha ho on port 8000.");
+      setError("Quiz generate nahi hua. API configuration check karo aur dobara try karo.");
     } finally {
       setIsLoading(false);
     }
