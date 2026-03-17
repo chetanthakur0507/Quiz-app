@@ -5,14 +5,14 @@ export default function Home() {
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-cyan-100 via-amber-50 to-emerald-100 px-4 py-10">
       <Image
-        src="/bg-3d-mesh.svg"
+        src="/bg photo.png"
         alt=""
         fill
         priority
         className="animated-bg-image pointer-events-none absolute inset-0 z-0 object-cover object-center opacity-95"
       />
       <Image
-        src="/bg-3d-mesh.svg"
+        src="/bg photo.png"
         alt=""
         fill
         priority

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node -e \"const fs=require('fs'); ['.next/dev/lock','.next-quiz/dev/lock'].forEach((p)=>{try{if(fs.existsSync(p)) fs.rmSync(p,{force:true});}catch{}})\"",
     "dev": "concurrently \"npm run next\" \"npm run python\"",
     "next": "next dev",
     "python": "python -m uvicorn python.api:app --reload --host 127.0.0.1 --port 8000",
